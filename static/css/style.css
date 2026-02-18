@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1f4037, #99f2c8);
+    min-height: 100vh;
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.1);
+    
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #000;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #ff9800;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #e68900;
+    transform: scale(1.05);
+}
+
+.btn-outline {
+    border: 2px solid white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: black;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255,255,255,0.2);
+    padding: 30px;
+    width: 280px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+
+/* Form Wrapper */
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+/* Glass Card */
+.form-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    padding: 40px;
+    width: 450px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.form-card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form-card p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* Input Styling */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-group label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    font-size: 12px;
+    background: rgba(0,0,0,0.6);
+    padding: 2px 6px;
+    border-radius: 5px;
+}
+
+/* Two Inputs Side-by-Side */
+.input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.small {
+    flex: 1;
+}
+
+/* Button */
+.full-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Login Link */
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.login-link a {
+    color: #ff9800;
+    text-decoration: none;
+}

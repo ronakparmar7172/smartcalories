@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="form-wrapper">
+    <div class="form-card">
+        <h2>Create Your Account 🥗</h2>
+        <p>Start tracking your health journey today</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <input type="text" name="username" required>
+                <label>Username</label>
+            </div>
+
+            <div class="input-group">
+                <input type="email" name="email" required>
+                <label>Email</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+
+            <!-- Goal Dropdown -->
+            <div class="input-group">
+                <select name="gender" required>
+                    <option value="" disabled selected>Select Your Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <button type="submit"   class="btn-primary full-btn">
+                Register Now 🚀
+            </button>
+        </form>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="{% url 'login' %}">Login</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

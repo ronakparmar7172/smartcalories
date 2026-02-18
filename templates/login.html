@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="form-wrapper">
+    <div class="form-card">
+        <h2>Welcome Back 👋</h2>
+        <p>Login to continue your fitness journey</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <input type="text" name="username" required>
+                <label>Username or Email</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+
+            <button type="submit" class="btn-primary full-btn">
+                Login 🔐
+            </button>
+        </form>
+
+        <p class="login-link">
+            Don’t have an account?
+            <a href="{% url 'register' %}">Register</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}
