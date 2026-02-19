@@ -1,0 +1,68 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="profile-container">
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-avatar">
+            {{ request.user.username|first|upper }}
+        </div>
+        <div class="profile-user-info">
+            <h2>{{ request.user.username }}</h2>
+            <p>{{ request.user.email }}</p>
+        </div>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="profile-card">
+
+        <div class="profile-row">
+            <span>Gender</span>
+            <strong>{{ request.user.gender }}</strong>
+        </div>
+
+        <div class="profile-row">
+            <span>Age</span>
+            <strong>{{ request.user.userprofile.age }} Years</strong>
+        </div>
+
+        <div class="profile-row">
+            <span>Height</span>
+            <strong>{{ request.user.userprofile.height }} cm</strong>
+        </div>
+
+        <div class="profile-row">
+            <span>Weight</span>
+            <strong>{{ request.user.userprofile.weight }} kg</strong>
+        </div>
+
+        <div class="profile-row">
+            <span>Activity Level</span>
+            <strong>{{ request.user.userprofile.activity_level }}</strong>
+        </div>
+
+        <!-- Highlight Target Calories -->
+        <div class="target-box">
+            🎯 Target Calories  
+            <h3>{{  request.user.userprofile.calorie_goal }} kcal/day</h3>
+        </div>
+
+        <a href="{% url 'edit_profile' %}" class="btn-primary full-btn">
+            Edit Profile ✏️
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

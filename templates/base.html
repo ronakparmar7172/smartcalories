@@ -4,6 +4,7 @@
 <head>
     <title>SmartCalories</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_head %}{% endblock %}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -13,7 +14,7 @@
     <ul class="nav-links">
         <li><a href="/">Home</a></li>
         {% if user.is_authenticated %}
-            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'profile_view' %}">Profile</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
         <li><a href="{% url 'register' %}">Register</a></li>

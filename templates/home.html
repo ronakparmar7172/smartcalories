@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+
+
 {% block content %}
+
+{% if not user.is_authenticated %}
 
 <section class="hero">
     <h1>Track Your Calories Smarter 🚀</h1>
     <p>AI Powered Food Detection & Health Monitoring System</p>
     <div class="hero-buttons">
         <a href="{% url 'register' %}" class="btn-primary">Get Started</a>
-        <a href="{% url 'dashboard' %}" class="btn-outline">View Dashboard</a>
+        <a href="{% url 'profile_view' %}" class="btn-outline">View Profile</a>
     </div>
 </section>
 
@@ -30,4 +35,87 @@
     </div>
 </section>
 
+{% else %}
+
+<div class="dashboard-container">
+
+    <!-- Header -->
+    <div class="dashboard-header">
+        <h2>Welcome, {{ request.user.username }} 👋</h2>
+        <p>Your daily nutrition summary</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h4>🎯 Target Calories</h4>
+            <h2>{{ request.user.userprofile.calorie_goal|floatformat:0 }} kcal</h2>
+        </div>
+
+        <div class="stat-card">
+            <h4>🔥 Consumed</h4>
+            <h2>{{ consumed|floatformat:0 }} kcal</h2>
+        </div>
+
+        <div class="stat-card">
+            <h4>📉 Remaining</h4>
+            <h2>{{ remaining|floatformat:0 }} kcal</h2>
+        </div>
+
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-section">
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ percentage }}%;"></div>
+        </div>
+        <p>{{ percentage|floatformat:0 }}% of daily goal completed</p>
+    </div>
+
+    <!-- Add Food Section -->
+    <div class="add-food-card">
+        <h3>Add Food 🍽</h3>
+
+        <form method="POST" action="{% url 'add_food' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="input-row">
+                <input type="text" name="food_name" placeholder="Food Name (Optional)">
+                <input type="number" name="calories" placeholder="Calories (If Manual)">
+            </div>
+
+            <input type="file" name="image">
+
+            <button type="submit">Add Food</button>
+        </form>
+
+        <small>You can add manually OR upload image for AI detection.</small>
+    </div>
+
+    <!-- Food Log -->
+    <div class="food-list-card">
+        <h3>Today's Food Log</h3>
+
+        {% for food in foods %}
+        <div class="food-item">
+            <div class="food-info">
+                <strong>{{ food.food_name }}</strong>
+                <span>{{ food.calories }} kcal</span>
+            </div>
+
+            {% if food.image %}
+                <img src="{{ food.image.url }}" class="food-img">
+            {% endif %}
+        </div>
+        {% empty %}
+        <p>No food added today.</p>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+
+{% endif %}
 {% endblock %}
