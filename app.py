@@ -4,11 +4,16 @@ import pandas as pd
 import os
 
 # ---------------- LOAD MODEL ----------------
+
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-model = pickle.load(open(os.path.join(BASE_DIR, "predictor/model.pkl"), "rb"))
-scaler = pickle.load(open(os.path.join(BASE_DIR, "predictor/scaler.pkl"), "rb"))
-encoder = pickle.load(open(os.path.join(BASE_DIR, "predictor/encoder.pkl"), "rb"))
+try:
+    model = pickle.load(open(os.path.join(BASE_DIR, "predictor", "model.pkl"), "rb"))
+    scaler = pickle.load(open(os.path.join(BASE_DIR, "predictor", "scaler.pkl"), "rb"))
+    encoder = pickle.load(open(os.path.join(BASE_DIR, "predictor", "encoder.pkl"), "rb"))
+except Exception as e:
+    st.error(f"Error loading model: {e}")
 
 feature_columns = [
     'Age', 'Height', 'Weight', 'Duration',
