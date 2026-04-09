@@ -101,9 +101,9 @@ if menu == "🏠 Home":
 
             bmi = round(weight / ((height / 100) ** 2), 2) if height > 0 else 0
 
-            if result < 200:
+            if result < 80:
                 suggestion = "Low activity"
-            elif result < 400:
+            elif result < 150:
                 suggestion = "Moderate activity"
             else:
                 suggestion = "High activity"
